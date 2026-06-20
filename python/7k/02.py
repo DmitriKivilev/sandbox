@@ -8,9 +8,17 @@
 # Минимальная строка ⬇️: вихри
 # Максимальная строка ⬆️: снежные
 
-i = input()
-list_a = list()
-while i != "КОНЕЦ":
+# i = input()
+# list_a = list()
+# while i != "КОНЕЦ":
+#     list_a.append(i)
+#     i = input()
+# print(f"Минимальная строка ⬇️: {min(list_a)}\nМаксимальная строка ⬆️: {max(list_a)}")
+
+# or через моржа
+
+list_a = []
+while (i := input()) != "КОНЕЦ":
     list_a.append(i)
-    i = input()
 print(f"Минимальная строка ⬇️: {min(list_a)}\nМаксимальная строка ⬆️: {max(list_a)}")
+
