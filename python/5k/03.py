@@ -16,7 +16,7 @@ for s in all_sums:
     if s == prev:
         count += 1
     else:
-        if count >= 2:
+        if count == 2:
             result.append(prev)
         prev = s
         count = 1
