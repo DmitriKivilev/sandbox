@@ -39,26 +39,25 @@ const server = http.createServer( (request, response) => {
             }}
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(stata))}
-    else if(request)
 
-    else if (request.url === '/users/' && request.method === 'GET'){
-        response.write('Page not found' )
-        response.end ()}
-
-    let str_a = "/users/2"
-    let splitSTR = str_a.split("/")
-    const final = splitSTR[1] + splitSTR[2]
-    const users = [
-        { id: 1, name: "Alice", age: 25 },
-        { id: 2, name: "Bob", age: 30 },
-        { id: 3, name: "Charlie", age: 22 }
-    ];
-    if (final.startsWith("users2")){
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.end(JSON.stringify(users[1]))}
-    else{
-        response.write("User not found")
-        response.end()}
-    })
+    else if (request.url.startsWith( '/users/') && request.method === 'GET'){
+        const users = [
+            { id: 1, name: "Alice", age: 25 },
+            { id: 2, name: "Bob", age: 30 },
+            { id: 3, name: "Charlie", age: 22 }];
+        const userID = Number(request.url.split("/")[2])
+        const user = users.find(u => u.id === userID)
+        if (user) {
+            response.writeHead(200, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify(user));
+         } else {
+            response.writeHead(404, { 'Content-Type': 'text/plain' });
+            response.end('User not found');
+        }}
+    else {
+        response.writeHead(404, { 'Content-Type': 'text/plain' });
+        response.end('Page not found');
+    }
+})
 
 server. listen(4000)
