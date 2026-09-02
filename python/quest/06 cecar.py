@@ -23,8 +23,8 @@ while True:
     else:
         print('Введите язык из перечня')
 while True:
-    choise = input('р - если хотите использовать рендж н - если хотите использовать шаг ').lower()
-    if choise == 'р':
+    choise = input('r - если хотите использовать рендж н - если хотите использовать шаг ').lower()
+    if choise == 'r':
         user_input = input('Введите рендж от 0 до ? ')
         if user_input.isdigit():
             rot_N = int(user_input)
@@ -60,7 +60,7 @@ def decrypt(road,alph,n):
 
         return wrds 
     
-    elif choise == "р":
+    elif choise == "r":
         txt = input("Введите слово/фразу: ")
 
         for num in range(n, -1, -1):
@@ -80,7 +80,7 @@ def decrypt(road,alph,n):
                     wrds += char
             print (wrds)
 
-if choise == "р":
+if choise == "r":
     decrypt(way,alphavit,rot_N)
 else:
     print(decrypt(way,alphavit,rot_N))
